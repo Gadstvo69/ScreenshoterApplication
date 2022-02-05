@@ -16,6 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane onKeyPressed="#onKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #CECBCF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
     <children>
         <HBox prefHeight="0.0" prefWidth="1280.0">
@@ -69,6 +70,15 @@
                     <value>
                         <Color />
                     </value></ColorPicker>
+                <Button fx:id="screenVideotBtn" mnemonicParsing="false" onAction="#buttonstart" style="-fx-background-color: none; -fx-border-color: red; -fx-border-radius: 5px;" text="Начать запись" textAlignment="CENTER" textFill="RED">
+                    <HBox.margin>
+                        <Insets top="22.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="timer"></Label>
             </children>
         </HBox>
         <ScrollPane fx:id="scrollView" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="106.0">

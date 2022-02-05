@@ -1,32 +1,37 @@
 package com.example.demo
 
-import javafx.scene.canvas.GraphicsContext
-import javafx.scene.image.WritableImage
-import javafx.scene.control.ColorPicker
 import javafx.embed.swing.SwingFXUtils
-import javafx.scene.SnapshotParameters
-import javafx.scene.control.ScrollPane
-import javafx.scene.input.MouseButton
-import javafx.scene.control.CheckBox
-import javafx.scene.input.MouseEvent
-import javafx.scene.control.Slider
-import javafx.geometry.Rectangle2D
-import javafx.scene.input.KeyEvent
-import javafx.scene.canvas.Canvas
-import javafx.scene.input.KeyCode
 import javafx.event.EventHandler
+import javafx.fxml.FXML
+import javafx.geometry.Rectangle2D
+import javafx.scene.SnapshotParameters
+import javafx.scene.canvas.Canvas
+import javafx.scene.canvas.GraphicsContext
+import javafx.scene.control.*
+import javafx.scene.image.WritableImage
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyEvent
+import javafx.scene.input.MouseButton
+import javafx.scene.input.MouseEvent
 import javafx.scene.paint.Color
 import javafx.scene.robot.Robot
 import javafx.stage.FileChooser
-import java.time.LocalDateTime
-import javax.imageio.ImageIO
 import javafx.stage.Screen
-import java.io.IOException
 import javafx.stage.Stage
-import javafx.fxml.FXML
 import java.io.File
+import java.io.IOException
+import java.time.LocalDateTime
+import java.util.*
+import javax.imageio.ImageIO
+
 
 class HelloController {
+    var isRecording = false
+
+
+    @FXML
+    private lateinit var screenVideotBtn: Button
+
     @FXML
     private lateinit var pingSlider: Slider
 
@@ -123,6 +128,20 @@ class HelloController {
     private fun screenshotButtonPressed() {
         takeScreenshot()
     }
+
+    @FXML
+    private fun buttonstart(){
+        if (isRecording) {
+            screenVideotBtn.text = "Закончить записть"
+            RecVideo.run(isRecording)
+        }
+        else{
+            screenVideotBtn.text = "Начать запись"
+            isRecording = false
+        }
+
+    }
+
 
     private fun takeScreenshot() {
         if (hideCheckbox.isSelected) {
